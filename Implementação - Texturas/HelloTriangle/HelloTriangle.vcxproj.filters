@@ -16,6 +16,42 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{d2d65f51-99e7-4492-94c5-5658c8357dc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{beacb635-8513-4490-9454-d5fee8b6dc83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Backgrounds">
+      <UniqueIdentifier>{27c62044-f2b4-411e-8577-781a9551a425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters">
+      <UniqueIdentifier>{6a8ce41d-46cf-4037-8206-dd30f1a358e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Enemies">
+      <UniqueIdentifier>{dd6a9064-0998-471d-b3a4-25d509833b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Enemies\Slime">
+      <UniqueIdentifier>{fd345649-dbe7-440e-80b7-65d0f6cb3708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Enemies\Slime\Blue Slime">
+      <UniqueIdentifier>{d88257e9-d8b6-4138-9ed3-702de180a916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Mage">
+      <UniqueIdentifier>{c238a968-573c-4c72-8aee-7288ba9ce27f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Rogue">
+      <UniqueIdentifier>{9b985e22-291e-447d-8f19-4dbd1f604efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Rogue\Idle">
+      <UniqueIdentifier>{3027ea54-29b5-429e-9db1-b7fa4790e182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Mage\Idle">
+      <UniqueIdentifier>{e2f6eae6-a32e-4940-b0e6-3e51be5bf05a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Knight">
+      <UniqueIdentifier>{f71ee80f-2e61-44b4-9f00-71e24e667c73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures\Characters\Knight\Idle">
+      <UniqueIdentifier>{9af2bbf4-33b4-4e35-a284-8c497767ebff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -30,9 +66,15 @@
     <ClCompile Include="..\..\Dependencies\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\include\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,5 +85,22 @@
     <None Include="..\shaders\tex.vs">
       <Filter>Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\backgrounds\fantasy-set\PNG\Battleground2\Bright\Battleground2.png">
+      <Filter>Resource Files\Textures\Backgrounds</Filter>
+    </Image>
+    <Image Include="Textures\characters\PNG\Knight\Idle\idle1.png">
+      <Filter>Resource Files\Textures\Characters\Knight\Idle</Filter>
+    </Image>
+    <Image Include="Textures\blue_slime.png">
+      <Filter>Resource Files\Textures\Enemies\Slime\Blue Slime</Filter>
+    </Image>
+    <Image Include="Textures\characters\PNG\Mage\Idle\idle1.png">
+      <Filter>Resource Files\Textures\Characters\Mage\Idle</Filter>
+    </Image>
+    <Image Include="Textures\characters\PNG\Rogue\Idle\idle1.png">
+      <Filter>Resource Files\Textures\Characters\Rogue\Idle</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -124,13 +124,22 @@
     <ClCompile Include="..\..\Dependencies\stb_image\stb_image.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\include\Shader.h" />
+    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\shaders\tex.fs" />
     <None Include="..\shaders\tex.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\backgrounds\fantasy-set\PNG\Battleground2\Bright\Battleground2.png" />
+    <Image Include="Textures\blue_slime.png" />
+    <Image Include="Textures\characters\PNG\Knight\Idle\idle1.png" />
+    <Image Include="Textures\characters\PNG\Mage\Idle\idle1.png" />
+    <Image Include="Textures\characters\PNG\Rogue\Idle\idle1.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
