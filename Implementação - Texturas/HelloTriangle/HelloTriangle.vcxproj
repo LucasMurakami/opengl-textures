@@ -122,12 +122,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\Common\src\Shader.cpp" />
     <ClCompile Include="..\..\Dependencies\stb_image\stb_image.cpp" />
+    <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\include\Shader.h" />
+    <ClInclude Include="CharacterController.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
@@ -136,10 +138,27 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\backgrounds\fantasy-set\PNG\Battleground2\Bright\Battleground2.png" />
-    <Image Include="Textures\blue_slime.png" />
-    <Image Include="Textures\characters\PNG\Knight\Idle\idle1.png" />
-    <Image Include="Textures\characters\PNG\Mage\Idle\idle1.png" />
-    <Image Include="Textures\characters\PNG\Rogue\Idle\idle1.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Double_Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Fall.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Hit.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Idle.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Run.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Wall_Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Double_Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Fall.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Hit.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Idle.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Run.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Wall_Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Double_Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Fall.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Hit.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Idle.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Jump.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Run.png" />
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Wall_Jump.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

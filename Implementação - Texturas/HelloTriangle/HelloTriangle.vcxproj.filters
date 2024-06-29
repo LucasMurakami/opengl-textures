@@ -22,35 +22,17 @@
     <Filter Include="Resource Files\Textures\Backgrounds">
       <UniqueIdentifier>{27c62044-f2b4-411e-8577-781a9551a425}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Textures\Characters">
-      <UniqueIdentifier>{6a8ce41d-46cf-4037-8206-dd30f1a358e1}</UniqueIdentifier>
+    <Filter Include="Resource Files\Textures\Main Characters">
+      <UniqueIdentifier>{2fdb0950-3d90-4b22-930b-1768edb16cf9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Textures\Enemies">
-      <UniqueIdentifier>{dd6a9064-0998-471d-b3a4-25d509833b54}</UniqueIdentifier>
+    <Filter Include="Resource Files\Textures\Main Characters\1">
+      <UniqueIdentifier>{32026593-9a19-4c38-a940-97cc81fd78dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Textures\Enemies\Slime">
-      <UniqueIdentifier>{fd345649-dbe7-440e-80b7-65d0f6cb3708}</UniqueIdentifier>
+    <Filter Include="Resource Files\Textures\Main Characters\2">
+      <UniqueIdentifier>{f0e4c40a-b33a-4af3-983b-16694428a859}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Textures\Enemies\Slime\Blue Slime">
-      <UniqueIdentifier>{d88257e9-d8b6-4138-9ed3-702de180a916}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Mage">
-      <UniqueIdentifier>{c238a968-573c-4c72-8aee-7288ba9ce27f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Rogue">
-      <UniqueIdentifier>{9b985e22-291e-447d-8f19-4dbd1f604efa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Rogue\Idle">
-      <UniqueIdentifier>{3027ea54-29b5-429e-9db1-b7fa4790e182}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Mage\Idle">
-      <UniqueIdentifier>{e2f6eae6-a32e-4940-b0e6-3e51be5bf05a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Knight">
-      <UniqueIdentifier>{f71ee80f-2e61-44b4-9f00-71e24e667c73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Textures\Characters\Knight\Idle">
-      <UniqueIdentifier>{9af2bbf4-33b4-4e35-a284-8c497767ebff}</UniqueIdentifier>
+    <Filter Include="Resource Files\Textures\Main Characters\3">
+      <UniqueIdentifier>{a156dde5-902a-4ce6-82a0-106ae2179e55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,12 +51,18 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\include\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -90,17 +78,68 @@
     <Image Include="Textures\backgrounds\fantasy-set\PNG\Battleground2\Bright\Battleground2.png">
       <Filter>Resource Files\Textures\Backgrounds</Filter>
     </Image>
-    <Image Include="Textures\characters\PNG\Knight\Idle\idle1.png">
-      <Filter>Resource Files\Textures\Characters\Knight\Idle</Filter>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Double_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
     </Image>
-    <Image Include="Textures\blue_slime.png">
-      <Filter>Resource Files\Textures\Enemies\Slime\Blue Slime</Filter>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Fall.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
     </Image>
-    <Image Include="Textures\characters\PNG\Mage\Idle\idle1.png">
-      <Filter>Resource Files\Textures\Characters\Mage\Idle</Filter>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Hit.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
     </Image>
-    <Image Include="Textures\characters\PNG\Rogue\Idle\idle1.png">
-      <Filter>Resource Files\Textures\Characters\Rogue\Idle</Filter>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Idle.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Run.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\2\Wall_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\2</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Double_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Fall.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Hit.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Idle.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Run.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\1\Wall_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\1</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Double_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Fall.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Hit.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Idle.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Run.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
+    </Image>
+    <Image Include="Textures\Game KIT\1 Main Characters\3\Wall_Jump.png">
+      <Filter>Resource Files\Textures\Main Characters\3</Filter>
     </Image>
   </ItemGroup>
 </Project>

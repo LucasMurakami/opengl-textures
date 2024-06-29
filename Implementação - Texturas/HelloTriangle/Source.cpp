@@ -1,4 +1,4 @@
-/* Hello Triangle - código adaptado de https://learnopengl.com/#!Getting-started/Hello-Triangle 
+/* Hello Triangle - código adaptado de https://learnopengl.com/#!Getting-started/Hello-Triangle
  *
  * Adaptado por Rossana Baptista Queiroz
  * para a disciplina de Processamento Gráfico - Unisinos
@@ -10,9 +10,12 @@
 #include <iostream>
 #include <string>
 #include <assert.h>
-#include "Sprite.h"
+#include <windows.h>
 
-//GLM
+#include "Sprite.h"
+#include "CharacterController.h"
+
+ //GLM
 #include <glm/glm.hpp> 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -21,7 +24,6 @@
 #include <stb_image.h>
 
 using namespace std;
-//using namespace glm; //para não usar glm::
 
 //Classe para manipulação dos shaders
 #include "Shader.h"
@@ -40,19 +42,6 @@ int main()
 {
 	// Inicialização da GLFW
 	glfwInit();
-
-	//Muita atenção aqui: alguns ambientes não aceitam essas configurações
-	//Você deve adaptar para a versão do OpenGL suportada por sua placa
-	//Sugestão: comente essas linhas de código para desobrir a versão e
-	//depois atualize (por exemplo: 4.5 com 4 e 5)
-	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
-
-	//Essencial para computadores da Apple
-//#ifdef __APPLE__
-//	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//#endif
 
 	// Criação da janela GLFW
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Texturas", nullptr, nullptr);
@@ -75,13 +64,12 @@ int main()
 
 	// Compilando e buildando o programa de shader
 	Shader shader("../shaders/tex.vs", "../shaders/tex.fs");
-			
+
 	// Carregar texturas
-	GLuint backgroundID = loadTexture("Textures/backgrounds/fantasy-set/PNG/Battleground2/bright/Battleground2.png");
-	GLuint knightID = loadTexture("Textures/characters/PNG/Knight/Idle/idle1.png");
-	GLuint mageID = loadTexture("Textures/characters/PNG/Mage/Idle/idle1.png");
-	GLuint rogueID = loadTexture("Textures/characters/PNG/Rogue/Idle/idle1.png");
-	GLuint blueSlimeID = loadTexture("Textures/blue_slime.png");
+	// GLuint backgroundID = loadTexture("Textures/backgrounds/fantasy-set/PNG/Battleground2/bright/Battleground2.png");
+	GLuint character2IdleID = loadTexture("Textures/Game KIT/1 Main Characters/2/Idle.png");
+	// GLuint character2RunID = loadTexture("Textures/Game KIT/1 Main Characters/2/Jump.png");
+	// GLuint characterTestID = loadTexture("Textures/Game KIT/1 Main Characters/2/Double_Jump.png");
 
 	//Ativando o buffer de textura 0 da opengl
 	glActiveTexture(GL_TEXTURE0);
@@ -90,16 +78,26 @@ int main()
 	shader.Use();
 
 	//Matriz de projeção paralela ortográfica
-	glm::mat4 projection = glm::ortho(0.0,800.0,0.0,600.0,-1.0,1.0);
+	glm::mat4 projection = glm::ortho(0.0, 800.0, 0.0, 600.0, -1.0, 1.0);
 	//Enviando para o shader a matriz como uma var uniform
-	shader.setMat4("projection", glm::value_ptr(projection));	
-	
+	shader.setMat4("projection", glm::value_ptr(projection));
+
 	// Criação dos sprites
-	Sprite background(shader, backgroundID, glm::vec3(400.0f, 300.0f, 0.0f), glm::vec3(800.0f, 600.0f, 0.0f), 0.0f);
-	Sprite mage(shader, mageID, glm::vec3(200.0f, 160.f, 0.0f), glm::vec3(200.0f, 200.0f, 0.0f), 0.0f);
-	Sprite knight(shader, knightID, glm::vec3(300.0f, 200.f, 0.0f), glm::vec3(200.0f, 200.0f, 0.0f), 0.0f);
-	Sprite rogue(shader, rogueID, glm::vec3(240.0f, 270.f, 0.0f), glm::vec3(200.0f, 200.0f, 0.0f), 0.0f);
-	Sprite blueSlime(shader, blueSlimeID, glm::vec3(600.0f, 200.0f, 0.0f), glm::vec3(200.0f, 200.0f, 0.0f), 0.0f);
+	CharacterController character(shader, character2IdleID, glm::vec3(200.0f, 200.0f, 0.0f), glm::vec3(300.0f, 300.0f, 0.0f), 0.0f);
+	// CharacterController characterTest(shader, characterTestID, glm::vec3(500.0f, 200.0f, 0.0f), glm::vec3(300.0f, 300.0f, 0.0f), 0.0f);
+
+	// Definindo as dimensões da viewport com as mesmas dimensões da janela da aplicação
+	int width, height;
+	glfwGetFramebufferSize(window, &width, &height);
+	glViewport(0, 0, width, height); //unidades de tela: pixel
+
+	// Animation
+	double time_now, time_old, time_delta;
+	time_now = time_old = glfwGetTime();
+
+	// Animation frame rate control
+	double targetFrameRate = 60.0; // Frame Rate
+	double targetFrameTime = 1.0 / targetFrameRate; // Tempo por frame
 
 	// Loop da aplicação - "game loop"
 	while (!glfwWindowShouldClose(window))
@@ -107,27 +105,44 @@ int main()
 		// Checa se houveram eventos de input (key pressed, mouse moved etc.) e chama as funções de callback correspondentes
 		glfwPollEvents();
 
-		// Definindo as dimensões da viewport com as mesmas dimensões da janela da aplicação
-		int width, height;
-
-		glfwGetFramebufferSize(window, &width, &height);
-		glViewport(0, 0, width, height); //unidades de tela: pixel
+		// Calcular o tempo delta
+		time_now = glfwGetTime();
+		time_delta = time_now - time_old;
 
 		// Limpa o buffer de cor
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //cor de fundo
+		glClearColor(0.680, 0.9451, 0.9451, 1.0f); //cor de fundo
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		// controles do personagem
+		if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+			character.moveRight(time_delta);
+		}
+		if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+			character.moveLeft(time_delta);
+		}
+		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+			character.jump(time_delta);
+		}
+
+		// Atualiza a animação com base na frame rate
+		if (time_delta >= targetFrameTime) {
+
+			time_old = time_now;
+
+			// Atualiza a animação do personagem - fixed at idle
+			character.updateTextureCoords(11.0f, 1.0f, time_delta);
+		}
+
+		// Atualiza o personagem na tela
+		character.updateCharacter(time_delta);
+
 		//Chamadas de desenho da cena
-		background.draw();
-		knight.draw();
-		mage.draw();
-		rogue.draw();
-		blueSlime.draw();
+		character.draw();
 
 		// Troca os buffers da tela
 		glfwSwapBuffers(window);
 	}
-	
+
 	// Finaliza a execução da GLFW, limpando os recursos alocados por ela
 	glfwTerminate();
 	return 0;
@@ -156,8 +171,8 @@ GLuint loadTexture(string texturePath)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	// Configuração do parâmetro FILTERING na minificação e magnificação da textura
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	// Atributos básicos da imagem, largura, altura e número de canais de cores
 	int width, height, nrChannels;
@@ -172,7 +187,7 @@ GLuint loadTexture(string texturePath)
 		{
 			// Texturiza a imagem com o RGB
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		} 
+		}
 		else //png
 		{
 			// Texturiza a imagem com o RGBA
